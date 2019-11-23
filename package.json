@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "mocha test/bootstrap.js --recursive test"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -18,6 +19,7 @@
     "chai": "^3.5.0",
     "chai-http": "^2.0.1",
     "mocha": "1.20.1",
-    "supertest": "0.13.0"
+    "supertest": "0.13.0",
+    "puppeteer": "0.13.0"
   }
 }
