@@ -7,6 +7,12 @@
 //  });
 // });
 const { expect } = require('chai');
+// var assert = require('assert');
+// var sinon = require('sinon');
+// var MockReq = require('mock-req');
+// var MockRes = require('mock-res');
+// var http = require('http');
+var robot = require('robotjs');
 //
 // describe('sample test', function () {
 //   it('should work', async function () {
@@ -16,7 +22,7 @@ const { expect } = require('chai');
 //   });
 // });
 
-describe('sample test', function () {
+describe('cicd test', function () {
   let page;
 
   before (async function () {
@@ -28,26 +34,40 @@ describe('sample test', function () {
     await page.close();
   })
 
+
   it('should have the correct page title', async function () {
     expect(await page.title()).to.eql('demo cicd');
-    done();
   });
 
-  // it('should have a heading', async function () {
-  //   const HEADING_SELECTOR = 'h1';
-  //   let heading;
-  //
-  //   await page.waitFor(HEADING_SELECTOR);
-  //   heading = await page.$eval(HEADING_SELECTOR, heading => heading.innerText);
-  //
-  //   expect(heading).to.eql('Page Title');
-  // });
-  //
-  // it('should have a single content section', async function () {
-  //   const BODY_SELECTOR = '.main-content';
-  //
-  //   await page.waitFor(BODY_SELECTOR);
-  //
-  //   expect(await page.$$(BODY_SELECTOR)).to.have.lengthOf(1);
-  // });
+  it('should have a send button', async function () {
+    const BUTTON_SELECTOR = 'button';
+    let heading;
+
+    await page.waitFor(BUTTON_SELECTOR);
+    button = await page.$eval(BUTTON_SELECTOR, button => button.innerText);
+
+    expect(button).to.eql('Send');
+  });
+
+  it('should send a message', async function(){
+        // Speed up the mouse.
+    robot.setMouseDelay(2);
+
+    var screenSize = robot.getScreenSize();
+    var height = screenSize.height;
+    var width = screenSize.width;
+    robot.moveMouse(width / 3, height - 360);
+    robot.mouseClick();
+    await robot.typeString("Hello World");
+    await robot.keyTap("enter");
+
+    const MESSAGE_SELECTOR = 'li';
+    let message;
+
+    await page.waitFor(MESSAGE_SELECTOR);
+    message = await page.$eval(MESSAGE_SELECTOR, message => message.innerText);
+
+    expect(message).to.eql('Hello World');
+  });
+
 });
