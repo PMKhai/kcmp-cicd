@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "SET NODE_ENV=dev && node ./bin/www",
-    "devstart": "SET NODE_ENV=dev && nodemon ./bin/www",
-    "test": "mocha test/bootstrap.js --timeout 10000 test"
+    "start": "node ./bin/www",
+    "test": "mocha test/bootstrap.js --timeout 10000 test",
+    "start-server": "npm start",
+    "ci": "start-server-and-test start-server http://localhost:3000 test"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -23,11 +24,6 @@
     "supertest": "0.13.0",
     "puppeteer": "0.13.0",
     "lodash": "4.17.15",
-    "sinon": "7.5.0",
-    "mock-req": "0.2.0",
-    "mock-res": "0.5.0",
-    "assert": "2.0.0",
-    "http": "0.0.0",
-    "robotjs": "0.5.1"
+    "start-server-and-test": "1.10.6"
   }
 }

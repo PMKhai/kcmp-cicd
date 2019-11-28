@@ -12,7 +12,7 @@ const { expect } = require('chai');
 // var MockReq = require('mock-req');
 // var MockRes = require('mock-res');
 // var http = require('http');
-var robot = require('robotjs');
+// var robot = require('robotjs');
 //
 // describe('sample test', function () {
 //   it('should work', async function () {
@@ -49,25 +49,25 @@ describe('cicd test', function () {
     expect(button).to.eql('Send');
   });
 
-  it('should send a message', async function(){
-        // Speed up the mouse.
-    robot.setMouseDelay(2);
-
-    var screenSize = robot.getScreenSize();
-    var height = screenSize.height;
-    var width = screenSize.width;
-    robot.moveMouse(width / 3, height - 360);
-    robot.mouseClick();
-    await robot.typeString("Hello World");
-    await robot.keyTap("enter");
-
-    const MESSAGE_SELECTOR = 'li';
-    let message;
-
-    await page.waitFor(MESSAGE_SELECTOR);
-    message = await page.$eval(MESSAGE_SELECTOR, message => message.innerText);
-
-    expect(message).to.eql('Hello World');
-  });
+  // it('should send a message', async function(){
+  //       // Speed up the mouse.
+  //   robot.setMouseDelay(2);
+  //
+  //   var screenSize = robot.getScreenSize();
+  //   var height = screenSize.height;
+  //   var width = screenSize.width;
+  //   robot.moveMouse(width / 3, height - 360);
+  //   robot.mouseClick();
+  //   await robot.typeString("Hello World");
+  //   await robot.keyTap("enter");
+  //
+  //   const MESSAGE_SELECTOR = 'li';
+  //   let message;
+  //
+  //   await page.waitFor(MESSAGE_SELECTOR);
+  //   message = await page.$eval(MESSAGE_SELECTOR, message => message.innerText);
+  //
+  //   expect(message).to.eql('Hello World');
+  // });
 
 });
