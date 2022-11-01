@@ -20,7 +20,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-http": "^2.0.1",
-    "mocha": "1.20.1",
+    "mocha": "10.1.0",
     "supertest": "0.13.0",
     "puppeteer": "0.13.0",
     "lodash": "4.17.15",
